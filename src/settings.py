@@ -10,7 +10,10 @@ class Settings(BaseSettings):
 
     OPENAI_API_KEY: str | None = None
 
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    model_config = SettingsConfigDict(
+        env_file=(".env.local", ".env"),  # .env.local tiene prioridad si existe
+        env_file_encoding="utf-8",
+    )
 
 
 settings = Settings()

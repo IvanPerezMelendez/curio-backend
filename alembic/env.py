@@ -1,3 +1,4 @@
+import os
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config, pool
@@ -9,6 +10,11 @@ import src.core.all_models  # noqa: F401 — registers all models with Base.meta
 config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
+
+# Override with DATABASE_URL env var (required in Docker/production)
+_db_url = os.getenv("DATABASE_URL")
+if _db_url:
+    config.set_main_option("sqlalchemy.url", _db_url)
 
 target_metadata = Base.metadata
 

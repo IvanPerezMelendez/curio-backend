@@ -1,0 +1,16 @@
+import uuid
+
+from sqlalchemy import Boolean, ForeignKey
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import Mapped, mapped_column
+
+from src.core.base_model import BaseModel
+
+
+class ExerciseTFModel(BaseModel):
+    __tablename__ = "exercises_true_false"
+
+    exercise_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("exercises.id"), nullable=False, unique=True
+    )
+    correct: Mapped[bool] = mapped_column(Boolean, nullable=False)

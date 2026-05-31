@@ -1,0 +1,18 @@
+[project]
+name = "be-smarter-be"
+version = "0.1.0"
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi[standard]>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "sqlalchemy>=2.0.0",
+    "alembic>=1.14.0",
+    "psycopg2-binary>=2.9.0",
+    "pydantic[email]>=2.9.0",
+    "pydantic-settings>=2.6.0",
+    "python-dotenv>=1.0.0",
+    "pyjwt>=2.13.0",
+    "pwdlib[argon2]>=0.2.1",
+    "python-multipart>=0.0.20",
+    "openai>=1.0.0",
+]
